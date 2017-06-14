@@ -1,3 +1,7 @@
 <h1>
   {{title}}
 </h1>
+<div *ngFor="let voto of votos">
+  <input-component voto="{{voto.title}}" (addVoto)="addVoto($event)"></input-component>
+</div>
+<h2>{{votacion}}</h2>
