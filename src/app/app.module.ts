@@ -5,15 +5,23 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+//input
 import { InputComponent } from './input/input.component';
 
+//pipes
 import { ConversorPipe } from './pipes/conversor.pipe';
+
+//directives
+import { GigantDirective } from './directives/gigant.directive';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     InputComponent,
-    ConversorPipe
+    ConversorPipe,
+    GigantDirective,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
