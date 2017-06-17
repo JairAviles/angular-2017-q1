@@ -22,4 +22,7 @@ export class AppComponent {
     this.votacion = "usted eligio: " + response;
   }
 
+  cantidad = 5;
+  factor = 1;
+
 }
