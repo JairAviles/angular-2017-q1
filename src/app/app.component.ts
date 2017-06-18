@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 import { InputComponent } from './input/input.component';
 
+import { TicketService } from './services/ticket.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,6 +12,11 @@ import { InputComponent } from './input/input.component';
 export class AppComponent {
   title = 'app works!';
   votacion = '';
+  tickets:any;
+
+  constructor(private ticketService: TicketService) {
+    this.tickets = ticketService.getTicket();
+  }
 
   votos = [
     {title: 'opción 1'},
