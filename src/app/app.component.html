@@ -11,12 +11,21 @@
 <div>Cantidad: <input [(ngModel)]="cantidad" /></div>
 <div>1 dolar es: <input [(ngModel)]="factor" /></div>
 <p>
-  oh es: {{cantidad | conversorPipe:factor }} 
+  oh es: {{cantidad | conversorPipe:factor }}
 </p>
 
 <ul>
-  <li *ngFor="let ticket of tickets" gigant> 
+  <li *ngFor="let ticket of tickets" gigant>
       <b>Ticket N: {{ticket.id}}</b> - {{ticket.titulo}}
       <span highlight> [ {{ticket.estado}} ] </span>
   </li>
 </ul>
+
+<form [formGroup]="myForm" (ngSubmit)="myForm.value">
+    <div>
+        <label for="nameInput">Nombre</label>
+        <input type="text" id="nameInput" placeholder="Nombre" name="nombre" [formControl]="myForm.controls['name']" />
+    </div>
+    <button type="submit">Submit</button>
+
+</form>

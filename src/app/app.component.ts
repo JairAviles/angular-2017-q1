@@ -4,6 +4,8 @@ import { InputComponent } from './input/input.component';
 
 import { TicketService } from './services/ticket.service';
 
+import { FormBuilder, FormGroup } from '@angular/forms';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,8 +16,16 @@ export class AppComponent {
   votacion = '';
   tickets:any;
 
-  constructor(private ticketService: TicketService) {
+  myForm : FormGroup;
+
+  constructor(
+    private ticketService: TicketService,
+    private fb: FormBuilder
+  ) {
     this.tickets = ticketService.getTicket();
+    this.myForm = fb.group({
+      'name': ['Jair Israel']
+    });    
   }
 
   votos = [
@@ -31,5 +41,9 @@ export class AppComponent {
 
   cantidad = 5;
   factor = 1;
+
+  onSubmit(value:string):void {
+      console.log(value);
+  }
 
 }
