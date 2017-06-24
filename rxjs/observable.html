@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Observable</title>
+</head>
+<body>
+
+    <button id="myButton">Click</button>
+    
+    <script src="https://unpkg.com/rxjs@5.4.1/bundles/Rx.min.js"></script>
+    <script>
+        const button =document.getElementById("myButton");
+
+        const sayHi = function() {
+            console.log("Oi Galera!");
+        }
+
+        const Observable = Rx.Observable;
+        
+        const clicks = Observable.fromEvent(button, "click");
+
+        const sub = clicks.forEach(
+            e => {
+                console.log(e);
+                sayHi();
+            }
+        );
+
+    </script>
+</body>
+</html>
