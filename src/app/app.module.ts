@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { PageNotFoundComponent } from './pageNotFound/page.not.found.component';
+import { InitComponent } from './init.component';
 
 //input
 import { InputComponent } from './input/input.component';
@@ -22,22 +24,29 @@ import { TicketService } from './services/ticket.service';
 import { StoreModule } from '@ngrx/store';
 import { CounterReducer } from './services/counter';
 
+//routes
+import { RouterModule, Routes} from '@angular/router';
+import { APPROUTER } from './commons/router'; 
+
 @NgModule({
   declarations: [
     AppComponent,
     InputComponent,
     ConversorPipe,
     GigantDirective,
-    HighlightDirective
+    HighlightDirective,
+    PageNotFoundComponent,
+    InitComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    StoreModule.provideStore({counter: CounterReducer})
+    StoreModule.provideStore({counter: CounterReducer}),
+    RouterModule.forRoot(APPROUTER)
   ],
   providers: [TicketService],
-  bootstrap: [AppComponent]
+  bootstrap: [InitComponent]
 })
 export class AppModule { }
