@@ -29,3 +29,13 @@
     <button type="submit">Submit</button>
 
 </form>
+
+<button (click)="increment()">Incrementar</button>
+<div>Counter: {{counter | async}}</div>
+<button (click)="decrement()">Decrementar</button>
+<button (click)="reset()">Reset</button>
+
+<p gigant>Progress: {{progress}}%</p>
+<p gigant *ngIf="progress >= 100">Done processing {{label}} of Angular zone!</p>
+<button gigant (click)="processWithinAngularZone()">con Angular Zone</button>
+<button gigant (click)="processOutsideOfAngularZone()">sin Angular Zone</button>

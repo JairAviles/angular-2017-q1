@@ -18,6 +18,10 @@ import { HighlightDirective } from './directives/highlight.directive';
 //service
 import { TicketService } from './services/ticket.service';
 
+//ngrx
+import { StoreModule } from '@ngrx/store';
+import { CounterReducer } from './services/counter';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +34,8 @@ import { TicketService } from './services/ticket.service';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    StoreModule.provideStore({counter: CounterReducer})
   ],
   providers: [TicketService],
   bootstrap: [AppComponent]
