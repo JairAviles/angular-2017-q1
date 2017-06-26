@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './pageNotFound/page.not.found.component';
 import { InitComponent } from './init.component';
+import { TicketDetail } from './tickets/ticket.detail';
 
 //input
 import { InputComponent } from './input/input.component';
@@ -36,7 +37,8 @@ import { APPROUTER } from './commons/router';
     GigantDirective,
     HighlightDirective,
     PageNotFoundComponent,
-    InitComponent
+    InitComponent,
+    TicketDetail
   ],
   imports: [
     BrowserModule,
