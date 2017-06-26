@@ -29,6 +29,23 @@ import { CounterReducer } from './services/counter';
 import { RouterModule, Routes} from '@angular/router';
 import { APPROUTER } from './commons/router'; 
 
+//firebase
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+
+export const firebaseConfig = {
+    apiKey: "AIzaSyAVw5a-h9My7qsGFSblw62yOH3tBS9N6TQ",
+    authDomain: "angular-platzi-12e67.firebaseapp.com",
+    databaseURL: "https://angular-platzi-12e67.firebaseio.com",
+    projectId: "angular-platzi-12e67",
+    storageBucket: "angular-platzi-12e67.appspot.com",
+    messagingSenderId: "670757863882"
+}
+
+export const myFirebaseAuthConfig = {
+  providers: AuthProviders.Google,
+  method: AuthMethods.Popup
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +63,8 @@ import { APPROUTER } from './commons/router';
     ReactiveFormsModule,
     HttpModule,
     StoreModule.provideStore({counter: CounterReducer}),
-    RouterModule.forRoot(APPROUTER)
+    RouterModule.forRoot(APPROUTER),
+    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
   ],
   providers: [TicketService],
   bootstrap: [InitComponent]

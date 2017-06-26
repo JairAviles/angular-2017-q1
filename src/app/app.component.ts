@@ -12,6 +12,10 @@ import { Observable } from 'rxjs/Observable';
 
 import { Router } from '@angular/router';
 
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
+
+import { AuthProviders, AuthMethods } from 'angularfire2';
+
 interface AppState {
   counter: number;
 }
@@ -26,6 +30,7 @@ export class AppComponent {
   title = 'app works!';
   votacion = '';
   tickets:any;
+  ticketFirebase: any;
 
   myForm : FormGroup;
 
@@ -36,8 +41,32 @@ export class AppComponent {
     private fb: FormBuilder,
     private store: Store<AppState>,
     private _ngZone:NgZone,
-    private router: Router
+    private router: Router,
+    private af : AngularFire
   ) {
+    this.ticketFirebase = af.database.list('/ticket');
+    /*
+    this.ticketFirebase.push({
+      'id': 1, 'titulo': 'no me funciona la impresora', 'estado': 'in progress'
+    });
+
+    this.ticketFirebase.push({
+      'id': 2, 'titulo': 'no me funciona la computadora', 'estado': 'finish'
+    });
+
+    this.ticketFirebase.push({
+      'id': 3, 'titulo': 'no me funciona el celular', 'estado': 'in progress'
+    });
+
+    this.ticketFirebase.push({
+      'id': 4, 'titulo': 'no me funciona una lampara', 'estado': 'really'
+    }); 
+
+    this.af.auth.login({
+      provider: AuthProviders.Google,
+      method: AuthMethods.Popup
+    }); */
+
     this.counter = store.select('counter');
     this.tickets = ticketService.getTickets();
     this.myForm = fb.group({
@@ -114,4 +143,20 @@ export class AppComponent {
     this.router.navigate(['/ticket', id]);
   }
 
+  updateTicket(key:void) {
+    console.log(key);
+    this.ticketFirebase.update(key, {
+      estado: 'modified state'
+    });
+  }
+
+  removeTicket(key):void {
+    console.log(key);
+    this.ticketFirebase.remove(key);
+  }
+
+  removeAllTicket():void {
+    this.ticketFirebase.remove();
+  }
+ 
 }
