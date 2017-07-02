@@ -1,0 +1,17 @@
+{
+  "name": "authentication-api",
+  "version": "0.0.1",
+  "description": "Backend MEAN example",
+  "main": "index.js",
+  "author": "Jair Aviles",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.3",
+    "express": "^4.15.3",
+    "jwt-simple": "^0.5.1",
+    "moment": "^2.18.1",
+    "mongodb": "^2.2.29",
+    "uuid": "^3.1.0"
+  }
+}
