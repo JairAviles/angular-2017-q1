@@ -29,12 +29,17 @@ MongoClient.connect('mongodb://localhost:27017/platzi-angular-mean', function(er
     }
 });
 
+var endpoints = require('./routes/endpoints');
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.options("*", cors());
+app.use("/", endpoints);
 
-var router = express.Router();
+var routes = express.Router();
+
+app.use(routes);
 
 var port = process.env.PORT || 3000;
 app.listen(port, function(){

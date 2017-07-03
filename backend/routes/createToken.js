@@ -1,4 +1,4 @@
-var jwt = require('jst-simple'),
+var jwt = require('jwt-simple'),
     moment = require('moment'),
     expiration = require('../config/tokenExpiration'),
     secret = require('../config/tokenSecret');
