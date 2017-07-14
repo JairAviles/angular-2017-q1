@@ -14,8 +14,19 @@
   oh es: {{cantidad | conversorPipe:factor }}
 </p>
 
+<h2>Tickets from MongoDB </h2>
+
 <ul>
   <li *ngFor="let ticket of tickets" gigant (click)="verTicket(ticket.id)">
+      <b>Ticket N: {{ticket.id}}</b> - {{ticket.titulo}}
+      <span highlight> [ {{ticket.estado}} ] </span>
+  </li>
+</ul>
+
+<h2>Tickets from JSON </h2>
+
+<ul>
+  <li *ngFor="let ticket of ticketMongo" gigant (click)="verTicket(ticket.id)">
       <b>Ticket N: {{ticket.id}}</b> - {{ticket.titulo}}
       <span highlight> [ {{ticket.estado}} ] </span>
   </li>

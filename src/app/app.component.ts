@@ -32,6 +32,9 @@ export class AppComponent {
   tickets:any;
   ticketFirebase: any;
 
+  ticketMongo:any;
+  errorMessage:any;
+
   myForm : FormGroup;
 
   counter: Observable<number>;
@@ -44,6 +47,13 @@ export class AppComponent {
     private router: Router,
     private af : AngularFire
   ) {
+    
+    this.ticketService.getTicketMongo()
+        .then(
+             ticket => this.ticketMongo = ticket,
+             error => this.errorMessage = <any>error
+        )
+
     this.ticketFirebase = af.database.list('/ticket');
     /*
     this.ticketFirebase.push({
