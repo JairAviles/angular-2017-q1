@@ -80,5 +80,61 @@ router.post('/ticket', cors(), function(req, res){
     })
 });
 
+router.post("/ticketUpdate", cors(), function(req, res){
+    "use strict";
+    console.log(req.body);
+    collection.update(
+        { id: parseInt(req.body.id) },
+        {
+            $set:{
+                titulo: req.body.titulo,
+                estado: req.body.estado
+            }
+        },
+        {w:1},
+        function(err, result){
+            var resultado;
+            if(!err){
+                resultado = {
+                    status:200,
+                    result: result
+                }
+            }
+            else{
+                resultado = {
+                    status: 500,
+                    result : err
+                }
+            }
+            console.dir(resultado);
+            res.set('Content-Type', 'application/json').send(JSON.stringify(resultado));
+        }
+    )
+});
+
+router.post('/ticketDelete', cors(), function(req, res){
+    "use strict";
+    console.log(req.body.id);
+    collection.remove(
+        { id: parseInt(req.body.id) },
+        {w:1},
+    function(err, result){
+        var resultado;
+        if (!err){
+            resultado = {
+                status: 200,
+                result: result
+            }
+        }
+        else{
+            resultado = {
+                status: 500,
+                result: err
+            }
+        }
+        res.set('Content-Type', 'application/json').send(JSON.stringify(resultado))
+    }
+    )
+})
 
 module.exports = router;

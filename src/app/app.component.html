@@ -21,6 +21,8 @@
       <b>Ticket N: {{ticket.id}}</b> - {{ticket.titulo}}
       <span highlight> [ {{ticket.estado}} ] </span>
       <button (click)="verMongoTicket(ticket.id)">Ver</button>
+      <button (click)="updateMongoTicket(ticket.id)">Update</button>
+      <button (click)="removeMongoTicket(ticket.id)">Delete</button>
   </li>
 </ul>
 

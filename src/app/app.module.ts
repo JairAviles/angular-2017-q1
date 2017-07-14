@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './pageNotFound/page.not.found.component';
 import { InitComponent } from './init.component';
 import { TicketDetail } from './tickets/ticket.detail';
+import { UpdateComponent } from './update/update.component';
 
 //input
 import { InputComponent } from './input/input.component';
@@ -55,6 +56,7 @@ export const myFirebaseAuthConfig = {
     HighlightDirective,
     PageNotFoundComponent,
     InitComponent,
+    UpdateComponent,
     TicketDetail
   ],
   imports: [

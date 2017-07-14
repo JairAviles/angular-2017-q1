@@ -48,11 +48,7 @@ export class AppComponent {
     private af : AngularFire
   ) {
     
-    this.ticketService.getTicketsMongo()
-        .then(
-             ticket => this.ticketMongo = ticket,
-             error => this.errorMessage = <any>error
-        )
+    this.callTicketsMongo();
 
     this.ticketFirebase = af.database.list('/ticket');
     /*
@@ -93,6 +89,14 @@ export class AppComponent {
 
   addVoto(response:string) {
     this.votacion = "usted eligio: " + response;
+  }
+
+  callTicketsMongo() {
+    this.ticketService.getTicketsMongo()
+        .then(
+             ticket => this.ticketMongo = ticket,
+             error => this.errorMessage = <any>error
+        )
   }
 
   cantidad = 5;
@@ -152,6 +156,25 @@ export class AppComponent {
   verMongoTicket(id:number): void {
     this.router.navigate(['/ticket', id]);
   }
+
+
+  updateMongoTicket(id:number):void{
+    this.router.navigate(['/ticketUpdate', id ]);
+  }
+
+  removeMongoTicket(id:number):void{
+    this.ticketService.removeTicketMongo(id)
+      .then(
+          ok => this.checking(ok),
+          error => console.log(<any>error)
+        );
+  }
+  checking(ok:any){
+        if(ok.n == 1){
+            alert("Se elimino Correctamente");
+        }
+        this.callTicketsMongo();
+    }
 
   verTicket(id: number):void {
     this.router.navigate(['/ticket', id]);

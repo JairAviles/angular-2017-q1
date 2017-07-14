@@ -84,4 +84,26 @@ export class TicketService {
         });
     }
 
+    updateTicketMongo(id:number, titulo: string, estado: string):Promise<any[]> {
+        return this.http.post(this.urlBackEnd + 'ticketUpdate',
+               { 
+                   'id': id,
+                   'titulo': titulo,
+                   'estado': estado
+               })
+        .toPromise()
+        .then(this.extractData)
+        .catch(this.handleError);
+    }
+
+    removeTicketMongo(id:number):Promise<any[]> {
+        return this.http.post(this.urlBackEnd + 'ticketDelete',
+               { 
+                   'id': id
+               })
+        .toPromise()
+        .then(this.extractData)
+        .catch(this.handleError);
+    }
+
 }
