@@ -30,6 +30,11 @@ import { CounterReducer } from './services/counter';
 import { RouterModule, Routes} from '@angular/router';
 import { APPROUTER } from './commons/router'; 
 
+//material
+import { MaterialModule } from '@angular/material';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+import 'hammerjs';
+
 //firebase
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
@@ -66,7 +71,8 @@ export const myFirebaseAuthConfig = {
     HttpModule,
     StoreModule.provideStore({counter: CounterReducer}),
     RouterModule.forRoot(APPROUTER),
-    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
+    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
+    MaterialModule
   ],
   providers: [TicketService],
   bootstrap: [InitComponent]
