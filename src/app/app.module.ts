@@ -38,6 +38,9 @@ import 'hammerjs';
 //firebase
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
+//primeNg
+import { ButtonModule } from 'primeng/primeng';
+
 export const firebaseConfig = {
     apiKey: "AIzaSyAVw5a-h9My7qsGFSblw62yOH3tBS9N6TQ",
     authDomain: "angular-platzi-12e67.firebaseapp.com",
@@ -67,6 +70,7 @@ export const myFirebaseAuthConfig = {
   imports: [
     BrowserModule,
     FormsModule,
+    ButtonModule,
     ReactiveFormsModule,
     HttpModule,
     StoreModule.provideStore({counter: CounterReducer}),

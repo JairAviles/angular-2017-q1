@@ -55,12 +55,12 @@
 <h2>Tickets from Firebase</h2>
 
 <ul>
-  <li *ngFor="let ticket of ticketFirebase | async" gigant (click)="verTicket(ticket.id)">
+  <li *ngFor="let ticket of ticketFirebase | async" (click)="verTicket(ticket.id)">
       <b>Ticket N: {{ticket.id}}</b> - {{ticket.titulo}}
       <span highlight> [ {{ticket.estado}} ] </span>
-      <button (click)="removeTicket(ticket.$key)">Remove</button>
-      <button (click)="updateTicket(ticket.$key)">Update</button>
-      <button (click)="verTicket(ticket.id)">Ver</button>
+      <button pButton label="Remove"></button>
+      <button pButton label="Update"></button>
+      <button pButton label="Ver"></button>
   </li>
 </ul>
 
